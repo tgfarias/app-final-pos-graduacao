@@ -62,6 +62,7 @@ class PrincipalController: UIViewController {
         {
             
             listEnderecos = ParseJson().buscaDados(cep: self.tfCEP.text!)
+            
             //Chama a proxima tela
             let viewController = self.storyboard?.instantiateViewController(withIdentifier: "tableview")
             viewController?.modalTransitionStyle = .crossDissolve

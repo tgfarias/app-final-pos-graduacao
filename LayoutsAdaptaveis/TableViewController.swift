@@ -33,13 +33,16 @@ class TableViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1
+        return 1//listEnderecos!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let celula = tableView.dequeueReusableCell(withIdentifier: "celula") as! CelulaPersonalisada
-//        celula.vrNome.text = vrClientes[indexPath.row].nome
+        
+    
+       // celula.uf = listEnderecos[indexPath.row].uf
+        //elula.vrNome.text = vrClientes[indexPath.row].nome
 //        celula.vrDescricao.text = vrClientes[indexPath.row].desc
 //        celula.vrData.text = String(vrClientes[indexPath.row].data)
 //        celula.vrImagem.donwloadImage(url: vrClientes[indexPath.row].url_foto)

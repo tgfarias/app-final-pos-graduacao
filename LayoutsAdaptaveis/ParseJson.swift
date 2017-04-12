@@ -30,7 +30,7 @@ class ParseJson
         do
         {
             //Baixa os dados da Web
-            let caminho = URL(string: "https://viacep.com.br/ws/"+cep+"/json")
+            let caminho = URL(string: "http://sthilos.com.br/app/rest/Servicoitem")
             let dados = try Data(contentsOf: caminho!)
             
             if (dados.count == 0)
@@ -41,17 +41,22 @@ class ParseJson
             //Realiza o parsing dos dados
             let arrayEnderecos = try JSONSerialization.jsonObject(with: dados, options: .mutableContainers) as? Array<Any>
             
+            print("Serializou")
+            
             if let vetorEnderecos = arrayEnderecos
             {
+                print("Entrou")
                 for json in vetorEnderecos
                 {
+                    
                     let json = json as! NSDictionary
+                    
                     let end = Endereco()
-                    end.cep = json["idcliente"] as! Int
-                    end.uf = json["nome"] as! String
-                    end.localidade = json["descricao"] as! String
-                    end.bairro = json["cliente_desde"] as! String
-                    end.unidade = json["icone"] as! String
+                    //end.cep = json["cod_servicoitem"] as! String
+                    end.uf = json["desc_titulo"] as! String
+                    end.localidade = json["desc_descricao"] as! String
+                    end.bairro = json["numr_valor"] as! String
+                    end.unidade = json["numr_comissao"] as! String
                     enderecos.append(end)
                 }
             }
@@ -61,4 +66,5 @@ class ParseJson
         
         return enderecos;
     }
+    
 }
